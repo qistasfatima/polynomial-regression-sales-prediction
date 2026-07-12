@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0b1120;
+  --foreground: #ffffff;
+  --card: #111827;
+  --card-elevated: #1f2937;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--foreground);
+    background: var(--background);
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 9999px;
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-surface-card/80 backdrop-blur-xl border border-white/10 rounded-3xl shadow-card;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-accent-primary/30 hover:shadow-glow;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent;
+  }
+
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(#111827, #111827) padding-box,
+      linear-gradient(135deg, #3b82f6, #8b5cf6) border-box;
+    border: 1px solid transparent;
+  }
+
+  .mesh-bg {
+    background-image: radial-gradient(
+        at 20% 20%,
+        rgba(59, 130, 246, 0.12) 0px,
+        transparent 50%
+      ),
+      radial-gradient(at 80% 10%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+      radial-gradient(at 50% 80%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
+  }
+
+  .grid-pattern {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
